@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tab切换</title>
+    <style>
+        ul,li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .mod-tab{
+            display: flex;
+            flex-direction: column;
+            width: 800px;
+            margin: 30px auto;
+
+        }
+        .tabs {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .tabs li{
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-right: none;
+            text-align: center;
+            flex-grow: 1;
+            cursor: pointer;
+            padding: 6px 10px;
+            background: #fff;
+        }
+        .tabs li:last-child{
+            border-right: 1px solid #ccc;
+        }
+        .tabs .active {
+            background: grey;
+            opacity: 0.6;
+        }
+        .mod-tab .wrap{
+            width: 800px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+
+        }
+        .mod-tab .panels {
+            height:100%;
+            overflow: hidden;
+            position: absolute;
+        }
+        .clear:after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+        .mod-tab .panels li{
+            height: 100%;
+            float: left;
+            width: 800px;
+        }
+        .mod-tab .panels>li:nth-child(1){
+            background: red;
+        }
+        .mod-tab .panels>li:nth-child(2){
+            background: green;
+        }
+        .mod-tab .panels>li:nth-child(3){
+            background: blue;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class = "mod-tab">
+    <ul class = "tabs">
+        <li class = "active">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div class = "wrap">
+        <ul class = "panels clear">
+            <li class = "active">content 1</li>
+            <li>content 2</li>
+            <li>content 3</li>
+        </ul>
+    </div>
+
+</div>
+
+<script src = "http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+
+    $('.tabs li').on('click',function() {
+        var $this = $(this);
+        var $index = $this.index();
+        var $panelWidth = $('.mod-tab .wrap').width();
+        $this.addClass('active').siblings().removeClass('active');
+        $this.parents('.mod-tab').find('.panels').animate({left: -$panelWidth * $index});
+    })
+
+
+
+</script>
+</body>
+</html>

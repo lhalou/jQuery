@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>li元素的添加与展示其内容</title>
+    <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<ul>
+    <li>内容1</li>
+    <li>内容2</li>
+    <li>内容3</li>
+</ul>
+<input type = "text" id = "ipt">
+<button id = "btn">添加</button>
+<div class = "wrap"></div>
+<script>
+    $('ul').on('click','li',function(){
+        //$(this)才是jQuery对象
+        var str = $(this).text();
+        $('.wrap').text(str);
+    });
+    $('#btn').on('click',function(){
+        var value = $('#ipt').val();
+        $('ul').append('<li>'+ value+'</li>');
+    })
+</script>
+</body>
+</html>

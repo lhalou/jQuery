@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tab切换</title>
+    <style>
+        ul,li {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .mod-tab{
+            display: flex;
+            flex-direction: column;
+            width: 800px;
+            margin: 30px auto;
+
+        }
+        .tabs {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .tabs li{
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-right: none;
+            text-align: center;
+            flex-grow: 1;
+            cursor: pointer;
+            padding: 6px 10px;
+        }
+        .tabs li:last-child{
+            border-right: 1px solid #ccc;
+        }
+        .tabs .active {
+            background: grey;
+            opacity: 0.6;
+
+        }
+        .panel {
+            border: 1px solid #ccc;
+            border-top: none;
+            height: 200px;
+            display: none;
+            padding: 6px 0 0 10px;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class = "mod-tab">
+    <ul class = "tabs">
+        <li class = "active">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div class = "panel active">内容1</div>
+    <div class = "panel">内容2</div>
+    <div class = "panel">内容3</div>
+</div>
+<div class = "mod-tab">
+    <ul class = "tabs">
+        <li class = "active">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div class = "panel active">内容1</div>
+    <div class = "panel">内容2</div>
+    <div class = "panel">内容3</div>
+</div>
+<div class = "mod-tab">
+    <ul class = "tabs">
+        <li class = "active">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div class = "panel active">内容1</div>
+    <div class = "panel">内容2</div>
+    <div class = "panel">内容3</div>
+</div>
+<script src = "http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    $('.tabs li').on('click',function(){
+        //获取当前点击的元素
+        var $this = $(this);
+        console.log($this);
+        // 获取当前点击元素的下表
+        var $index = $this.index();
+        // 获取对应下表的div元素
+        var $div = $this.parents('.mod-tab').find('.panel').eq($index);
+        /*
+        var $div = $('.panel').eq($index);
+        以这种方式获取的div是页面的所欲div，为了使tab和div对应，所以应该获取tab的父容器内的div
+         */
+        // 当前点击的元素添加class并且邻居元素移除class
+        $this.addClass('active').siblings().removeClass('active');
+        $div.addClass('active').siblings().removeClass('active');
+    })
+
+
+</script>
+</body>
+</html>
