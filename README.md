@@ -40,3 +40,28 @@ $('div').on('click.hello',function(){})
 $('div').off('click.hello')
 ```
 
+5. 动画自定义-animate作用点：
+
+如果想让元素设置的`top,left...`生效，元素必须设置`position`。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
