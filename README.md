@@ -12,12 +12,12 @@ $('div').on('click','span',function(){
 ## 注意点
 
 1. $()与window.onload()的区别：
-    1.1. $()是指DOM元素加载完成后，就执行JS代码。
-    1.2. window.onload()是指页面全部加载完成，才会执行JS代码。
+    - $()是指DOM元素加载完成后，就执行JS代码。
+    - window.onload()是指页面全部加载完成，才会执行JS代码。
     
 2. jQuery对象与DOM元素的区别：
-    2.1. jQuery对象是对DOM对象的一次封装，只能使用jQuery的对应方法，不能使用DOM原生对象的方法。
-    2.2 DOM原生对象也不能使用jQuery对象的方法。
+    - jQuery对象是对DOM对象的一次封装，只能使用jQuery的对应方法，不能使用DOM原生对象的方法。
+    - DOM原生对象也不能使用jQuery对象的方法。
     ```
     //jQuery对象转换DOM对象
     $('div') //jQuery  
